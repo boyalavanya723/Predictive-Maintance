@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance | Machine Intelligence</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #172033;
+        }
+
+        header {
+            background: #101b35;
+            color: white;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        header h2 {
+            font-size: 21px;
+        }
+
+        header span {
+            color: #8bd8ff;
+        }
+
+        .status {
+            font-size: 13px;
+            background: #173c39;
+            color: #8df0c1;
+            padding: 9px 13px;
+            border-radius: 20px;
+        }
+
+        main {
+            max-width: 1150px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            margin-bottom: 28px;
+        }
+
+        .welcome h1 {
+            font-size: clamp(25px, 4vw, 34px);
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #65718a;
+            line-height: 1.6;
+        }
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat, .panel {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 23px;
+            box-shadow: 0 5px 18px rgba(20, 40, 80, 0.04);
+        }
+
+        .stat p {
+            color: #68758b;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .stat h2 {
+            font-size: 25px;
+        }
+
+        .stat small {
+            display: block;
+            color: #78849a;
+            margin-top: 8px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .panel h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #738097;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 19px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5deea;
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+            color: #172033;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #8bd8ff;
+            border-color: #2784cf;
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            border-radius: 9px;
+            background: #1769d2;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px;
+            margin-top: 24px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1056b4;
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 17px;
+            border-radius: 10px;
+            background: #edf5ff;
+            border: 1px solid #c9e1ff;
+            line-height: 1.6;
+        }
+
+        .result h3 {
+            margin-bottom: 8px;
+        }
+
+        .result.warning {
+            background: #fff1ed;
+            border-color: #ffc7b8;
+            color: #a33420;
+        }
+
+        .result.safe {
+            background: #eaf9f0;
+            border-color: #b8e7ca;
+            color: #17683a;
+        }
+
+        .info {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 10px;
+            background: #f1f5fb;
+            color: #53627b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .info h3 {
+            color: #172033;
+            margin-bottom: 7px;
+        }
+
+        footer {
+            text-align: center;
+            color: #7c879b;
+            padding: 30px 15px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .overview {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                margin-top: 25px;
+                padding: 0 14px;
+            }
+
+            .fields {
+                grid-template-columns: 1fr;
+            }
+
+            .stat, .panel {
+                padding: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>⚙ Predictive<span>IQ</span></h2>
+        <div class="status">● Prediction System</div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Predictive Maintenance Dashboard</h1>
+            <p>
+                Analyze machine operating conditions and estimate potential
+                failure risk using your trained machine-learning model.
+            </p>
+        </section>
+
+        <section class="overview">
+            <div class="stat">
+                <p>Analysis Mode</p>
+                <h2>On Demand</h2>
+                <small>Based on submitted sensor readings</small>
+            </div>
+
+            <div class="stat">
+                <p>Input Parameters</p>
+                <h2>05</h2>
+                <small>Machine operating measurements</small>
+            </div>
+
+            <div class="stat">
+                <p>Prediction Engine</p>
+                <h2>ML Model</h2>
+                <small>Uses your trained classifier</small>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="panel">
+                <h2>Machine Sensor Data</h2>
+                <p class="description">
+                    Enter the machine readings below and run a prediction.
+                    Default values are examples; replace them with actual
+                    readings when available.
+                </p>
+
+                <form method="POST">
+                    <div class="fields">
+                        <div>
+                            <label for="machine_type">Machine Type</label>
+                            <select id="machine_type" name="machine_type" required>
+                                <option value="L">Low (L)</option>
+                                <option value="M" selected>Medium (M)</option>
+                                <option value="H">High (H)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="air_temp">Air Temperature (K)</label>
+                            <input id="air_temp" type="number"
+                                name="air_temp" step="any" value="303" required>
+                        </div>
+
+                        <div>
+                            <label for="process_temp">Process Temperature (K)</label>
+                            <input id="process_temp" type="number"
+                                name="process_temp" step="any" value="313" required>
+                        </div>
+
+                        <div>
+                            <label for="rotational_speed">Rotational Speed (rpm)</label>
+                            <input id="rotational_speed" type="number"
+                                name="rotational_speed" step="any" value="1300" required>
+                        </div>
+
+                        <div>
+                            <label for="torque">Torque (Nm)</label>
+                            <input id="torque" type="number"
+                                name="torque" step="any" value="65" required>
+                        </div>
+
+                        <div>
+                            <label for="tool_wear">Tool Wear (min)</label>
+                            <input id="tool_wear" type="number"
+                                name="tool_wear" min="0" step="any" value="250" required>
+                        </div>
+                    </div>
+
+                    <button type="submit">Run Failure Prediction →</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="panel">
+                    <h2>Prediction Results</h2>
+                    <p class="description">
+                        Your model's output will appear here after analysis.
+                    </p>
+
+                    {% if prediction %}
+                        <div class="result {% if 'Warning' in prediction %}warning{% else %}safe{% endif %}">
+                            <h3>
+                                {% if 'Warning' in prediction %}
+                                    ⚠ Potential Failure Detected
+                                {% else %}
+                                    ✓ No Failure Predicted
+                                {% endif %}
+                            </h3>
+                            <p>{{ prediction }}</p>
+                        </div>
+                    {% else %}
+                        <div class="info">
+                            <h3>Awaiting Sensor Data</h3>
+                            Submit the form to view the prediction produced
+                            by your trained machine-learning model.
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="info">
+                    <h3>Maintenance Guidance</h3>
+                    <p>
+                        Use the prediction as a decision-support aid.
+                        Review sensor readings and follow your organization's
+                        maintenance procedures before taking action.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        PredictiveIQ · Machine Learning Based Predictive Maintenance
+    </footer>
+</body>
+</html>
